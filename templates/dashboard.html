@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Style each chart container */
+        .chart {
+            width: 50%;
+            margin: 20px auto;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <form action="{{ url_for('home') }}"><button>Home</button></form>
+            <form action="{{ url_for('dashboard') }}" method="GET"><button>Dashboard</button></form>
+            <form action="{{ url_for('inquiry') }}"><button>Inquiry</button></form>
+            <form action="{{ url_for('classify') }}" method="GET"><button>Classify</button></form>
+        </div>
+
+        <div class="main">
+            <h2>Dashboard</h2>
+
+            <!-- Pie Chart -->
+            <div class="chart">
+                <p>Pie Chart</p>
+                <canvas id="pieChart" width="400" height="300"></canvas>
+            </div>
+
+            <!-- Histogram -->
+            <div class="chart">
+                <p>Histogram</p>
+                <canvas id="histogramChart" width="400" height="300"></canvas>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        // Debugging Console Logs
+        console.log("Pie Data:", {{ pie_data | tojson }});
+        console.log("Histogram Data:", {{ hist_data | tojson }});
+
+        // Pie Chart Data
+        const pieData = {{ pie_data | tojson }};
+        const pieLabels = Object.keys(pieData);
+        const pieValues = Object.values(pieData);
+
+        new Chart(document.getElementById("pieChart"), {
+            type: "pie",
+            data: {
+                labels: pieLabels,
+                datasets: [{
+                    data: pieValues,
+                    backgroundColor: ["#36A2EB", "#FF6384"],
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Pie Chart of Ticket Status'
+                    }
+                }
+            }
+        });
+
+        // Histogram Data
+        const histData = {{ hist_data | tojson }};
+        const histLabels = Object.keys(histData);
+        const histValues = Object.values(histData);
+
+        new Chart(document.getElementById("histogramChart"), {
+            type: "bar",
+            data: {
+                labels: histLabels,
+                datasets: [{
+                    data: histValues,
+                    backgroundColor: "#42A5F5",
+                }]
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Count Of Open Status For Each Ticket Type'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

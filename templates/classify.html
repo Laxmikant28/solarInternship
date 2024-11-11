@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <form action="{{ url_for('home') }}"><button >Home</button></form>
+            <form action="{{ url_for('dashboard') }}" method=["GET","POST"]><button >Dashboard</button></form>
+            <form action="{{ url_for('inquiry') }}"><button >Inquiry</button></form>
+            <form action="{{ url_for('classify') }}" method=["GET","POST"]><button >Classify</button></form>
+            
+        </div>
+        
+
+        <div class="main">
+            <h2>Choose Ticket Type</h2>
+            <div class="color-box red" onclick="window.location.href='/category/Billing inquiry'">Billing inquiry ({{ lenB }})</div>
+            <div class="color-box blue" onclick="window.location.href='/category/Cancellation request'">Cancellation request ({{ lenC }})</div>
+            <div class="color-box green" onclick="window.location.href='/category/Product inquiry'">Product inquiry ({{ lenP }})</div>
+            <div class="color-box yellow" onclick="window.location.href='/category/Refund request'">Refund request ({{ lenR }})</div>
+            <div class="color-box purple" onclick="window.location.href='/category/Technical issue'">Technical issue ({{ lenT }})</div>
+        </div>
+
+        <div class="comments-section">
+        {% if comments %}
+            <h2>Comments for: {{ category | capitalize }}</h2>
+            <ul>
+                {% for comment in comments %}
+                <div class="comment">
+                    <li>{{ comment.customer_name }} ({{ comment.customer_email }})</li>
+                    <li>{{ comment.customer_description }}</li><br>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    </div>
+
+
+</body>
+</html>

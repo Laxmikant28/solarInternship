@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Information</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <form action="{{ url_for('home') }}"><button >Home</button></form>
+            <form action="{{ url_for('dashboard') }}" method=["GET","POST"]><button >Dashboard</button></form>
+            <form action="{{ url_for('inquiry') }}"><button >Inquiry</button></form>
+            <form action="{{ url_for('classify') }}" method=["GET","POST"]><button >Classify</button></form>
+
+        </div>
+        
+        
+        <div class="main">
+            <h2>Solar Internshit Project</h2><br>
+            <h3>Problem Statement: Customer Inquiry Classification for Support Ticket
+Management </h3><br>
+            <h3>Description</h3>
+            <p>In a customer support environment, organizations receive a vast
+number of inquiries daily, ranging from simple questions to
+complex technical issues. Efficiently managing and categorizing
+these inquiries is crucial for providing timely responses and
+improving customer satisfaction. The task is to develop an
+Automated Customer Inquiry Classification System using Natural
+Language Processing (NLP) techniques to analyze support tickets
+and classify them into predefined categories. </p><br>
+
+            <h3>Challenges</h3>
+            <p>Implement NLP techniques such as tokenization, TF-IDF, or
+word embeddings. </p>
+            <p>Build a classification model to predict the category of each
+inquiry using machine learning algorithms or neural
+networks.</p>
+            <p>Create a system that automatically classifies incoming
+support tickets in real-time and routes them to the
+appropriate support teams. </p>
+            <p>Provide insights into the most common types of inquiries
+and their associated keywords to inform support staff
+training and product/service improvements.</p><br>
+
+            <h3>Expected Deliverables</h3>
+            <p>A cleaned and processed dataset ready for analysis.</p>
+            <p>Demonstrate clearly data storage and transformation
+process (ETL Pipeline).</p>
+            <p>A trained and evaluated classification model capable of
+accurately categorizing inquiries.</p>
+            <p>A dashboard or interface that allows support teams to view
+classified inquiries, trends, and key insights. </p>
+
+
+
+        </div>
+    </div>
+</body>
+</html>
+

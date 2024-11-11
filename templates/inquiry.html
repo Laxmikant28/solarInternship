@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<style>
+    /* Form Styles */
+.main form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+.main form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.main form input[type="text"]:focus,
+.main form input[type="email"]:focus,
+.main form textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.main form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main form button:hover {
+    background-color: #45a049;
+}
+
+/* Optional: Add spacing for better form alignment */
+.main form textarea {
+    height: 150px;
+}
+
+.main form input[type="text"],
+.main form input[type="email"],
+.main form textarea,
+.main form button {
+    font-family: Arial, sans-serif;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .main form {
+        padding: 15px;
+    }
+
+    .main form input[type="text"],
+    .main form input[type="email"],
+    .main form textarea,
+    .main form button {
+        font-size: 14px;
+    }
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <form action="{{ url_for('home') }}"><button >Home</button></form>
+            <form action="{{ url_for('dashboard') }}" method=["GET","POST"]><button >Dashboard</button></form>
+            <form action="{{ url_for('inquiry') }}"><button >Inquiry</button></form>
+            <form action="{{ url_for('classify') }}" method=["GET","POST"]><button >Classify</button></form>
+            
+        </div>
+        
+        
+        <div class="main">
+            <h2>Customer inquiry Form</h2>
+            <form action="{{ url_for('submit') }}" method="POST">
+                <label >Customer Name:</label>
+                <input type="text" id="name" name="name"><br>
+                
+                <label >Email:</label>
+                <input type="email" id="email" name="email" ><br>
+                
+                <label >inquiry:</label>
+                <textarea id="description" name="description"></textarea><br>
+                
+                <button type="submit">Submit Query</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

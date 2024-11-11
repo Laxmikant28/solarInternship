@@ -1,0 +1,7 @@
+{
+    "params": {
+      "local_server": "True",
+      "local_url": "mysql://root:@localhost/support_ticket_management",
+      "prod_url": "mysql://root:@localhost/support_ticket_management"
+    }
+  }
